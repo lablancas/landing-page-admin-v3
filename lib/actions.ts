@@ -1,18 +1,14 @@
 "use server";
 
 import { revalidateTag } from "next/cache";
-import { headers } from "next/headers";
 import { getDatabase } from "@/lib/mongodb";
-import { getAuth } from "@/lib/auth";
 import { PostSubmissionSchema, SubmitPostResult, VoteResult } from "@/lib/schemas";
 import { ObjectId } from "mongodb";
+import { auth0 } from "./auth-client";
 
 export async function submitPost(formData: FormData): Promise<SubmitPostResult> {
   try {
-    const auth = await getAuth();
-    const session = await auth.api.getSession({
-      headers: await headers(),
-    });
+    const session = await auth0.getSession();
 
     if (!session?.user) {
       throw new Error("Unauthorized");
@@ -56,10 +52,7 @@ export async function submitPost(formData: FormData): Promise<SubmitPostResult> 
 
 export async function voteOnPost(postId: string): Promise<VoteResult> {
   try {
-    const auth = await getAuth();
-    const session = await auth.api.getSession({
-      headers: await headers(),
-    });
+    const session = await auth0.getSession();
 
     if (!session?.user) {
       throw new Error("Unauthorized");

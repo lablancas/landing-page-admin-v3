@@ -2,7 +2,7 @@
 
 import { useOptimistic, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { authClient } from "@/lib/auth-client";
+import { useUser } from "@auth0/nextjs-auth0";
 import { Post, OptimisticVote } from "@/lib/schemas";
 import { voteOnPost } from "@/lib/actions";
 import { getTimeAgo } from "@/lib/utils";
@@ -13,7 +13,7 @@ interface PostItemProps {
 }
 
 export function PostItem({ post, globalIndex }: PostItemProps) {
-  const { data: session } = authClient.useSession();
+  const session = useUser();
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
 
@@ -32,7 +32,7 @@ export function PostItem({ post, globalIndex }: PostItemProps) {
 
     // Redirect to login if user is not authenticated
     if (!session?.user) {
-      router.push("/login");
+      router.push("/auth/login");
       return;
     }
 
@@ -97,7 +97,7 @@ export function PostItem({ post, globalIndex }: PostItemProps) {
             rel="noopener noreferrer"
             className="text-xs text-gray-600 ml-1 dark:text-gray-400 hover:text-[#00684A] dark:hover:text-[#00ED64] transition-colors"
           >
-            ({new URL(post.url).hostname})
+            ({post.url ? new URL(post.url).hostname : "NO_URL"})
           </a>
         </div>
 

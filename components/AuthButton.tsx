@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { authClient } from "@/lib/auth-client";
+import { useUser } from "@auth0/nextjs-auth0";
 import { useRouter } from "next/navigation";
 
 interface AuthButtonProps {
@@ -9,15 +9,15 @@ interface AuthButtonProps {
 }
 
 export function AuthButton({ className }: AuthButtonProps) {
-  const { data: session, isPending } = authClient.useSession();
+  const { user: session, isLoading: isPending } = useUser();
   const router = useRouter();
 
   const handleLogout = async () => {
-    await authClient.signOut();
+    router.push("/auth/logout");
   };
 
   const handleLoginClick = () => {
-    router.push("/login");
+    router.push("/auth/login");
   };
 
   if (isPending) {

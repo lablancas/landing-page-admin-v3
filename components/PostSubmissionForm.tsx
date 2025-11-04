@@ -17,11 +17,11 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import { submitPost } from "@/lib/actions";
-import { authClient } from "@/lib/auth-client";
+import { useUser } from "@auth0/nextjs-auth0";
 
 export function PostSubmissionForm() {
   const router = useRouter();
-  const { data: session } = authClient.useSession();
+  const session = useUser();
   const form = useForm<PostSubmission>({
     resolver: zodResolver(PostSubmissionSchema),
     defaultValues: {
@@ -35,7 +35,7 @@ export function PostSubmissionForm() {
   const handleSubmit = async (data: PostSubmission) => {
     // Redirect to login if user is not authenticated
     if (!session?.user) {
-      router.push("/login");
+      router.push("/auth/login");
       return;
     }
 

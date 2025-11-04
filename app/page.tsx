@@ -40,8 +40,8 @@ const DATA = {
       href: "https://vercel.com/marketplace/mongodbatlas"
     },
     betterAuth: {
-      text: "Better Auth",
-      href: "https://better-auth.com"
+      text: "Auth0",
+      href: "https://auth0.com"
     },
     github: {
       text: "GitHub",
