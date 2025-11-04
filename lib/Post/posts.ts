@@ -2,7 +2,7 @@
 
 import { unstable_cache } from "next/cache";
 import { getDatabase } from "@/lib/mongodb";
-import { Post, PostsResponse } from "@/lib/schemas";
+import { Post, PostsResponse } from "@/lib/Post/schemas";
 
 async function fetchPostsFromDB(page: number = 1, limit: number = 10): Promise<PostsResponse> {
   const skip = (page - 1) * limit;

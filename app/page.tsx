@@ -8,7 +8,7 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { DatabaseStatusBadge } from "@/components/DatabaseStatusBadge";
 import { AuthButton } from "@/components/AuthButton";
-import { PostSection } from "@/components/PostSection";
+import { PostSection } from "@/components/Post/PostSection";
 
 const DATA = {
   title: "Next.js with MongoDB",

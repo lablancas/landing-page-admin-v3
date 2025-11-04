@@ -2,9 +2,9 @@
 
 import { revalidateTag } from "next/cache";
 import { getDatabase } from "@/lib/mongodb";
-import { PostSubmissionSchema, SubmitPostResult, VoteResult } from "@/lib/schemas";
+import { PostSubmissionSchema, SubmitPostResult, VoteResult } from "@/lib/Post/schemas";
 import { ObjectId } from "mongodb";
-import { auth0 } from "./auth-client";
+import { auth0 } from "../auth-client";
 
 export async function submitPost(formData: FormData): Promise<SubmitPostResult> {
   try {

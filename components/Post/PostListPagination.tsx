@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
-import { PaginationInfo } from "@/lib/schemas";
+import { PaginationInfo } from "@/lib/Post/schemas";
 import {
   Pagination,
   PaginationContent,

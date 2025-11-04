@@ -3,8 +3,8 @@
 import { useOptimistic, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { useUser } from "@auth0/nextjs-auth0";
-import { Post, OptimisticVote } from "@/lib/schemas";
-import { voteOnPost } from "@/lib/actions";
+import { Post, OptimisticVote } from "@/lib/Post/schemas";
+import { voteOnPost } from "@/lib/Post/actions";
 import { getTimeAgo } from "@/lib/utils";
 
 interface PostItemProps {

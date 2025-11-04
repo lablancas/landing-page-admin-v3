@@ -3,7 +3,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
-import { PostSubmissionSchema, type PostSubmission } from "@/lib/schemas";
+import { PostSubmissionSchema, type PostSubmission } from "@/lib/Post/schemas";
 import { toast } from "sonner";
 import {
   Form,
@@ -16,7 +16,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
-import { submitPost } from "@/lib/actions";
+import { submitPost } from "@/lib/Post/actions";
 import { useUser } from "@auth0/nextjs-auth0";
 
 export function PostSubmissionForm() {

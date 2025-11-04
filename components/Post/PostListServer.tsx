@@ -1,4 +1,4 @@
-import { getPosts } from "@/lib/posts";
+import { getPosts } from "@/lib/Post/posts";
 import { PostItem } from "./PostItem";
 import { PostListPagination } from "./PostListPagination";
 
